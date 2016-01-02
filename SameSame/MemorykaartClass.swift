@@ -78,22 +78,31 @@ class MemoryKaart : UIButton {
     
     func omdraaien()
     {
-        // ga alle kaarten langs
-        for memoryKaart in variabelen.arrayMemoryKaarten {
-            // verzamel het aantal kaarten dat open ligt
-            if memoryKaart.voorkantBoven {
-                variabelen.omgedraaideKaarten = variabelen.omgedraaideKaarten + [memoryKaart]
+        // verzamel alle kaarten die open liggen
+        for i in variabelen.arrayMemoryKaarten where i.voorkantBoven == true {
+            variabelen.omgedraaideKaarten = variabelen.omgedraaideKaarten + [i]
+            print("Voorkant boven:")
+            for i in variabelen.omgedraaideKaarten {
+                print(i.naam, separator: ", ", terminator: "\n")
             }
         }
         
         if variabelen.omgedraaideKaarten.count < variabelen.aantalSets {
             // maximaal aantal sets is nog niet omgedraaid
-            print("Nog geen \(variabelen.aantalSets) kaartjes omgedraaid. Nu wordt \(self.naam) omgedraaid.")
+            print("\(variabelen.omgedraaideKaarten.count) van de \(variabelen.aantalSets) kaartjes omgedraaid. Nu wordt \(self.naam) omgedraaid.")
+            // ben ik al omgedraaid?
+            if self.voorkantBoven == true {
+                print("\(self.naam) ligt al goed, nu niets doen.")
+            }else{
+                print("\(self.naam) wordt nu omgedraaid.")
+                self.voorkantBovenDraaien()
+            }
         }
         if variabelen.omgedraaideKaarten.count >= variabelen.aantalSets {
             // maximaal aantal sets is nog niet omgedraaid
-            print("Nog geen \(variabelen.aantalSets) kaartjes omgedraaid. Nu wordt \(self.naam) omgedraaid.")
+            print("Er zijn \(variabelen.aantalSets) kaartjes omgedraaid. Eerst checken of er een setje is, daarna wordt \(self.naam) omgedraaid.")
         }
+        
 //            let uniekeVerzamelingOmgedraaideKaartjen = Array(Set(variabelen.omgedraaideKaarten))
 //            if uniekeVerzamelingOmgedraaideKaartjen.count == 1 {
 //                // setje gevonden
@@ -106,7 +115,7 @@ class MemoryKaart : UIButton {
 //                }
 //                variabelen.omgedraaideKaarten = []
 //            }
-        }
+
         
 //        if variabelen.omgedraaideKaarten.count == variabelen.aantalSets + 1 {
 //            variabelen.omgedraaideKaarten = []
@@ -117,8 +126,7 @@ class MemoryKaart : UIButton {
 //        if self.voorkantBoven == false {
 //            self.voorkantBovenDraaien()
 //        }
-    
-    }
+        }
     
     init(dek: Array<String>, id: Int, coordinaten: CGRect){
         self.dek = dek
