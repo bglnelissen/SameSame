@@ -86,32 +86,38 @@ class MemoryKaart : UIButton {
             }
         }
         
-        if variabelen.omgedraaideKaarten.count == variabelen.aantalSets {
-            // maximaal aantal sets is omgedraaid
-            let uniekeVerzamelingOmgedraaideKaartjen = Array(Set(variabelen.omgedraaideKaarten))
-            if uniekeVerzamelingOmgedraaideKaartjen.count == 1 {
-                // setje gevonden
-                print("Setje gevonden! \(uniekeVerzamelingOmgedraaideKaartjen.first)")
-            }else{
-                // geen setje gevonden
-                print("Geen setje gevonden:")
-                for i in uniekeVerzamelingOmgedraaideKaartjen {
-                    i.omdraaien()
-                }
-                variabelen.omgedraaideKaarten = []
-            }
+        if variabelen.omgedraaideKaarten.count < variabelen.aantalSets {
+            // maximaal aantal sets is nog niet omgedraaid
+            print("Nog geen \(variabelen.aantalSets) kaartjes omgedraaid. Nu wordt \(self.naam) omgedraaid.")
+        }
+        if variabelen.omgedraaideKaarten.count >= variabelen.aantalSets {
+            // maximaal aantal sets is nog niet omgedraaid
+            print("Nog geen \(variabelen.aantalSets) kaartjes omgedraaid. Nu wordt \(self.naam) omgedraaid.")
+        }
+//            let uniekeVerzamelingOmgedraaideKaartjen = Array(Set(variabelen.omgedraaideKaarten))
+//            if uniekeVerzamelingOmgedraaideKaartjen.count == 1 {
+//                // setje gevonden
+//                print("Setje gevonden! \(uniekeVerzamelingOmgedraaideKaartjen.first)")
+//            }else{
+//                // geen setje gevonden
+//                print("Geen setje gevonden:")
+//                for i in uniekeVerzamelingOmgedraaideKaartjen {
+//                    i.omdraaien()
+//                }
+//                variabelen.omgedraaideKaarten = []
+//            }
         }
         
-        if variabelen.omgedraaideKaarten.count == variabelen.aantalSets + 1 {
-            variabelen.omgedraaideKaarten = []
-            variabelen.omgedraaideKaarten = variabelen.omgedraaideKaarten + [self]
-        }
-        
-        // alleen een 'dicht' kaartje mag worden open gedraaid
-        if self.voorkantBoven == false {
-            self.voorkantBovenDraaien()
-        }
-        
+//        if variabelen.omgedraaideKaarten.count == variabelen.aantalSets + 1 {
+//            variabelen.omgedraaideKaarten = []
+//            variabelen.omgedraaideKaarten = variabelen.omgedraaideKaarten + [self]
+//        }
+//        
+//        // alleen een 'dicht' kaartje mag worden open gedraaid
+//        if self.voorkantBoven == false {
+//            self.voorkantBovenDraaien()
+//        }
+    
     }
     
     init(dek: Array<String>, id: Int, coordinaten: CGRect){
