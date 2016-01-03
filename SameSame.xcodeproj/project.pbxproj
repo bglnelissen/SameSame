@@ -13,6 +13,7 @@
 		49468E191C14B9BA00258556 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49468E181C14B9BA00258556 /* Assets.xcassets */; };
 		49468E1C1C14B9BA00258556 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49468E1A1C14B9BA00258556 /* LaunchScreen.storyboard */; };
 		49468E4C1C14BD9800258556 /* MemorykaartClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49468E4B1C14BD9800258556 /* MemorykaartClass.swift */; };
+		49578B481C3821AC009A0F60 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49578B471C3821AC009A0F60 /* Functions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		49468E1B1C14B9BA00258556 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		49468E1D1C14B9BA00258556 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49468E4B1C14BD9800258556 /* MemorykaartClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemorykaartClass.swift; sourceTree = "<group>"; };
+		49578B471C3821AC009A0F60 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				49468E111C14B9BA00258556 /* AppDelegate.swift */,
 				49468E131C14B9BA00258556 /* ViewController.swift */,
 				49468E4B1C14BD9800258556 /* MemorykaartClass.swift */,
+				49578B471C3821AC009A0F60 /* Functions.swift */,
 				49468E151C14B9BA00258556 /* Main.storyboard */,
 				49468E181C14B9BA00258556 /* Assets.xcassets */,
 				49468E1A1C14B9BA00258556 /* LaunchScreen.storyboard */,
@@ -142,6 +145,7 @@
 				49468E141C14B9BA00258556 /* ViewController.swift in Sources */,
 				49468E4C1C14BD9800258556 /* MemorykaartClass.swift in Sources */,
 				49468E121C14B9BA00258556 /* AppDelegate.swift in Sources */,
+				49578B481C3821AC009A0F60 /* Functions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

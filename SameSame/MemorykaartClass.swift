@@ -15,7 +15,7 @@ class MemoryKaart : UIButton {
     let id : Int
     let naam : String
     var voorkantBoven : Bool = false
-    var found : Bool = false
+    var gevonden : Bool = false
     
     func wiggle(rotationRads : CGFloat = 0.0007 ) {
         var rotateDirection : CGFloat
@@ -79,12 +79,9 @@ class MemoryKaart : UIButton {
     func omdraaien()
     {
         // verzamel alle kaarten die open liggen
+        variabelen.omgedraaideKaarten = []
         for i in variabelen.arrayMemoryKaarten where i.voorkantBoven == true {
-            variabelen.omgedraaideKaarten = variabelen.omgedraaideKaarten + [i]
-            print("Voorkant boven:")
-            for i in variabelen.omgedraaideKaarten {
-                print(i.naam, separator: ", ", terminator: "\n")
-            }
+            variabelen.omgedraaideKaarten += [i]
         }
         
         if variabelen.omgedraaideKaarten.count < variabelen.aantalSets {
@@ -92,16 +89,46 @@ class MemoryKaart : UIButton {
             print("\(variabelen.omgedraaideKaarten.count) van de \(variabelen.aantalSets) kaartjes omgedraaid. Nu wordt \(self.naam) omgedraaid.")
             // ben ik al omgedraaid?
             if self.voorkantBoven == true {
-                print("\(self.naam) ligt al goed, nu niets doen.")
+                print("\(self.naam) ligt met de voorkant naar boven, nu niets doen.")
             }else{
                 print("\(self.naam) wordt nu omgedraaid.")
                 self.voorkantBovenDraaien()
             }
         }
-        if variabelen.omgedraaideKaarten.count >= variabelen.aantalSets {
-            // maximaal aantal sets is nog niet omgedraaid
-            print("Er zijn \(variabelen.aantalSets) kaartjes omgedraaid. Eerst checken of er een setje is, daarna wordt \(self.naam) omgedraaid.")
+
+        // verzamel OPNIEUW alle kaarten die open liggen
+        variabelen.omgedraaideKaarten = []
+        for i in variabelen.arrayMemoryKaarten where i.voorkantBoven == true {
+            variabelen.omgedraaideKaarten += [i]
         }
+        
+        if variabelen.omgedraaideKaarten.count == variabelen.aantalSets {
+            // maximaal aantal sets is nog niet omgedraaid
+            print("Er zijn \(variabelen.aantalSets) kaartjes omgedraaid. Eerst checken of er een setje is")
+            
+            var kaartenOpengedraaid : [String]
+            
+            for i in variabelen.omgedraaideKaarten {
+                kaartenOpengedraaid.append(i.naam)
+            }
+            
+            let uniekeVerzamelingOmgedraaideKaartjen = Array(Set(variabelen.omgedraaideKaarten))
+            if uniekeVerzamelingOmgedraaideKaartjen.count == 1 {
+                // setje gevonden
+                print("Setje gevonden! \(uniekeVerzamelingOmgedraaideKaartjen.first)")
+            }else{
+                print("Geen setje gevonden, alles wordt teruggedraaid. Wel 1 moment laten liggen")
+                var delayTime : Double = 1.2
+                for i in variabelen.omgedraaideKaarten {
+                    delay(delayTime) {
+                        print("Kaartje: \(i.naam)")
+                        i.achterkantBovenDraaien()
+                    }
+                    delayTime = delayTime + delayTime
+                }
+            }
+        }
+        
         
 //            let uniekeVerzamelingOmgedraaideKaartjen = Array(Set(variabelen.omgedraaideKaarten))
 //            if uniekeVerzamelingOmgedraaideKaartjen.count == 1 {
