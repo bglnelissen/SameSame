@@ -127,10 +127,10 @@ class MemoryKaart : UIButton {
             for i in variabelen.arrayMemoryKaarten {
                 UIView.animateWithDuration(0.6 ,
                     animations: {
-                        i.transform = CGAffineTransformMakeScale(0.6, 0.6)
+                        i.transform = CGAffineTransformMakeScale(3.0, 3.0)
                     },
                     completion: { finish in
-                        UIView.animateWithDuration(0.6){
+                        UIView.animateWithDuration(1.6){
                             i.transform = CGAffineTransformIdentity
                             i.wiggle(CGFloat(2*π))
                         }
@@ -142,6 +142,7 @@ class MemoryKaart : UIButton {
             alert.message = "Start de app opnieuw op!"
             alert.addButtonWithTitle("😜")
             alert.show()
+            self.adjustsImageWhenDisabled = false
         }
     }
     
