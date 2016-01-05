@@ -29,8 +29,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
   
         // Schudden
-        // let randomSeed : UInt64 =  1 // UInt64(arc4random_uniform(1337)) // random int 1337
-        let randomSeed = UInt64(arc4random_uniform(1337)) // random int 1337
+         let randomSeed : UInt64 =  1 // UInt64(arc4random_uniform(1337)) // random int 1337
+        // let randomSeed = UInt64(arc4random_uniform(1337)) // random int 1337
         
         var memoryKaartenSet : [String] = [] // lege set met kaarten
         for _ in 1...variabelen.aantalSets {

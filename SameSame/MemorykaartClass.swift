@@ -80,6 +80,7 @@ class MemoryKaart : UIButton {
 
     func setjeGevonden(){
         self.gevonden = true
+        self.enabled = false
         UIView.animateWithDuration(0.6 ,
             animations: {
                 self.transform = CGAffineTransformMakeScale(0.6, 0.6)
@@ -87,7 +88,6 @@ class MemoryKaart : UIButton {
             completion: { finish in
                 UIView.animateWithDuration(0.6){
                     self.transform = CGAffineTransformIdentity
-                    self.enabled = false
                     self.wiggle()
                     // afbeelding veranderen
 
