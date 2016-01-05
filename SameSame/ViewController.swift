@@ -15,8 +15,8 @@ struct variabelen {
     // Settings
     static var aantalSets : Int = 2
     static let minimaleKaartAfstand : CGFloat = 0.04 // minimal card margin
-    // static let memoryKaarten : [String] = ["bb_aanbeeld", "bb_asjemenou", "bb_boor", "bb_cadeautje", "bb_flex", "bb_gaatjestang", "bb_hamer", "bb_handboor", "bb_ladder", "bb_motorzaag", "bb_passer", "bb_plant", "bb_schaar", "bb_snor", "bb_veiligheidsspeld", "bb_verven", "bb_zaklamp"]
-    static let memoryKaarten : [String] = ["bb_aanbeeld", "bb_asjemenou", "bb_boor"]
+    static let memoryKaarten : [String] = ["bb_aanbeeld", "bb_asjemenou", "bb_boor", "bb_cadeautje", "bb_flex", "bb_gaatjestang", "bb_hamer", "bb_handboor", "bb_ladder", "bb_motorzaag", "bb_passer", "bb_plant", "bb_schaar", "bb_snor", "bb_veiligheidsspeld", "bb_verven", "bb_zaklamp"]
+    // static let memoryKaarten : [String] = ["bb_aanbeeld", "bb_asjemenou", "bb_boor"]
 
     static var arrayMemoryKaarten:[MemoryKaart] = []
     static var omgedraaideKaarten:[MemoryKaart] = []
@@ -28,8 +28,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
   
         // Schudden
-         let randomSeed : UInt64 =  1 // UInt64(arc4random_uniform(1337)) // random int 1337
-        // let randomSeed = UInt64(arc4random_uniform(1337)) // random int 1337
+        // let randomSeed : UInt64 =  1 // UInt64(arc4random_uniform(1337)) // random int 1337
+        let randomSeed = UInt64(arc4random_uniform(1337)) // random int 1337
         
         var memoryKaartenSet : [String] = [] // lege set met kaarten
         for _ in 1...variabelen.aantalSets {
