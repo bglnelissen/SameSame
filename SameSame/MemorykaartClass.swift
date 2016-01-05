@@ -141,16 +141,16 @@ class MemoryKaart : UIButton {
                 }
             }else{
                 // geen setje gevonden
-                print("Geen setje gevonden, alles wordt teruggedraaid. Wel 1 moment laten liggen")
-                var delayTime : Double = 0.9
+                print("Geen setje gevonden, alles wordt teruggedraaid.")
+                let delayTime : Double = 0.9
                 for i in variabelen.omgedraaideKaarten {
-                    delay(delayTime) {
-                        print("Kaartje: \(i.naam)")
+                    delay(delayTime){
                         i.gevonden = false
                         i.achterkantBovenDraaien()
+                
                     }
-                    delayTime = delayTime + delayTime
                 }
+
             }
         }
         
