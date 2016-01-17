@@ -8,6 +8,8 @@
 
 import Foundation
 
+let π = M_PI
+
 func delay(delay:Double, closure:()->()) {
     dispatch_after(
         dispatch_time(

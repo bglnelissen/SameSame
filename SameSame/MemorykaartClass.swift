@@ -27,41 +27,6 @@ class MemoryKaart : UIButton {
         self.transform = CGAffineTransformMakeRotation(rotateDirection)
     }
     
-//    func setjeCheck(){
-//        for memoryKaart in variabelen.arrayMemoryKaarten {
-//            // tel het aantal kaarten dat open ligt
-//            if memoryKaart.voorkantBoven {
-//                variabelen.omgedraaideKaarten = variabelen.omgedraaideKaarten + [memoryKaart]
-//            }
-//        }
-//        // er is een array met open kaarten (variabelen.omgedraaideKaarten)
-//        
-//        // als het juiste aantal is omgedraaid -> check voor een setje
-//        if variabelen.omgedraaideKaarten.count == variabelen.aantalSets {
-//
-//            // beurt voorbij, reset de counter
-//            variabelen.omgedraaideKaarten = []
-//
-//        }
-//
-//    }
-    
-    //        print("aantal kaartjes in de verzameling is nu: \(kaarten.count)")
-    //        if kaarten.count == variabelen.aantalSets { // alle kaartjes voor deze beurt zijn omgedraaid
-    //            let kaartjesUniek = Array(Set(kaarten))
-    //            print("Aantal unieke in deze ronde: \(kaartjesUniek.count)")
-    //            if kaartjesUniek.count == 1 {
-    ////                let alert = UIAlertView()
-    ////                alert.title = "SameSame"
-    ////                alert.message = "Je hebt een setje gevonden: \(self.naam)"
-    ////                alert.addButtonWithTitle("Oh yeah!")
-    ////                alert.show()
-    //                print("Setje gevonden!")
-    //            }else{
-    //                print("Jammer man, geen setje")
-    //            }
-    //        }
-    
     func achterkantBovenDraaien() {
         self.voorkantBoven = false
         self.enabled = true // kaartje is klikbaar als hij naar boven ligt
@@ -80,6 +45,7 @@ class MemoryKaart : UIButton {
 
     func setjeGevonden(){
         self.gevonden = true
+        self.enabled = false
         UIView.animateWithDuration(0.6 ,
             animations: {
                 self.transform = CGAffineTransformMakeScale(0.6, 0.6)
@@ -87,7 +53,6 @@ class MemoryKaart : UIButton {
             completion: { finish in
                 UIView.animateWithDuration(0.6){
                     self.transform = CGAffineTransformIdentity
-                    self.enabled = false
                     self.wiggle()
                     // afbeelding veranderen
 
@@ -141,44 +106,45 @@ class MemoryKaart : UIButton {
                 }
             }else{
                 // geen setje gevonden
-                print("Geen setje gevonden, alles wordt teruggedraaid. Wel 1 moment laten liggen")
-                var delayTime : Double = 0.9
+                print("Geen setje gevonden, alles wordt teruggedraaid.")
+                let delayTime : Double = 0.9
                 for i in variabelen.omgedraaideKaarten {
-                    delay(delayTime) {
-                        print("Kaartje: \(i.naam)")
+                    delay(delayTime){
                         i.gevonden = false
                         i.achterkantBovenDraaien()
+                
                     }
-                    delayTime = delayTime + delayTime
                 }
             }
         }
-        
-        
-//            let uniekeVerzamelingOmgedraaideKaartjen = Array(Set(variabelen.omgedraaideKaarten))
-//            if uniekeVerzamelingOmgedraaideKaartjen.count == 1 {
-//                // setje gevonden
-//                print("Setje gevonden! \(uniekeVerzamelingOmgedraaideKaartjen.first)")
-//            }else{
-//                // geen setje gevonden
-//                print("Geen setje gevonden:")
-//                for i in uniekeVerzamelingOmgedraaideKaartjen {
-//                    i.omdraaien()
-//                }
-//                variabelen.omgedraaideKaarten = []
-//            }
 
-        
-//        if variabelen.omgedraaideKaarten.count == variabelen.aantalSets + 1 {
-//            variabelen.omgedraaideKaarten = []
-//            variabelen.omgedraaideKaarten = variabelen.omgedraaideKaarten + [self]
-//        }
-//        
-//        // alleen een 'dicht' kaartje mag worden open gedraaid
-//        if self.voorkantBoven == false {
-//            self.voorkantBovenDraaien()
-//        }
+        // check of alle kaartjes nu omgedraaid zijn
+        var eindeSpel = true
+        for i in variabelen.arrayMemoryKaarten where (i.gevonden == false){
+            eindeSpel = false
         }
+        if eindeSpel {
+            for i in variabelen.arrayMemoryKaarten {
+                UIView.animateWithDuration(0.6 ,
+                    animations: {
+                        i.transform = CGAffineTransformMakeScale(3.0, 3.0)
+                    },
+                    completion: { finish in
+                        UIView.animateWithDuration(1.6){
+                            i.transform = CGAffineTransformIdentity
+                            i.wiggle(CGFloat(2*π))
+                        }
+                })
+
+            }
+            let alert = UIAlertView()
+            // alert.title = "SameSame"
+            alert.message = "Start de app opnieuw op!"
+            alert.addButtonWithTitle("😜")
+            alert.show()
+            self.adjustsImageWhenDisabled = false
+        }
+    }
     
     init(dek: Array<String>, id: Int, coordinaten: CGRect){
         self.dek = dek
