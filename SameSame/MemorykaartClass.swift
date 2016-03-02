@@ -138,9 +138,9 @@ class MemoryKaart : UIButton {
 
             }
             let alert = UIAlertView()
-            // alert.title = "SameSame"
-            alert.message = "Start de app opnieuw op!"
-            alert.addButtonWithTitle("😜")
+            alert.title = "Winnaar!"
+            alert.message = "🐵 Start de app opnieuw op! 🐵"
+            alert.addButtonWithTitle("🐒")
             alert.show()
             self.adjustsImageWhenDisabled = false
         }
